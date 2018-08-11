@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>set全局操作</title>
+</head>
+<body>
+    <h1>set全局操作</h1>
+    <hr>
+    <p>Vue.set的作用就是在构造器外部操作构造器内部的数据、属性或者方法，外部数据就是不在Vue构造器里的data处声明，
+        而是在构造器外部声明，在data处引用。外部数据可以让程序更加灵活，我们可以在外部获取任何想要的数据形式，然后让data引用</p>
+    <p>在外部改变数据的三种方式
+        <ol>
+            <li>用Vue.set改变</li>
+            <li>用Vue对象的方法添加</li>
+            <li>直接操作外部数据</li>
+        </ol>
+        其实这三种方式都可以操作外部的数据，Vue也给我们增加了一种操作外部数据的方法。
+    </p>
+    <p>
+        由于Javascript的限制，Vue不能自动检测以下变动的数组：
+        <ol>
+            <li>当用索引直接设置一个项时，vue不会为我们自动更新</li>
+            <li>当修改数组的长度时，vue不会为我们自动更新</li>
+        </ol>
+    </p>
+    <div id = "app">
+        {{count}}
+        <ul>
+            <li v-for = "item in arr">{{item}}</li>
+        </ul>
+    </div>
+    <p><button onclick="add()">add</button></p>
+    <script type = "text/javascript">
+        function add(){
+           Vue.set(outData,'count',2);//用Vue.set改变
+           //app.count++;//用Vue对象的方法添加
+          //outData.count++;//直接操作外部数据
+          //app.arr[1] = 'ddd';
+          Vue.set(app.arr,1,'dd')
+        }
+        var outData = {
+             count:1,
+            // goods:'car'
+            arr:['aa','bb','cc']
+        } 
+        var app = new Vue({
+            el:'#app',
+            data:outData
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件</title>
+    <script type = "text/javascript" src = "../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>组件</h1>
+    <hr>
+    <p>
+        <ol>
+            <li>
+                全局化注册组件：全局化就是在构造器的外部用Vue.component来注册，这是一个最简单的组件编写方法，并且他可以放在多个构造器的作用域里
+            </li>
+            <li>
+                局部注册组件：和全局注册组件是相对应的，局部注册的组件只能在组件注册的作用于里进行使用，其他作用于使用无效。注意：构造器里面的components是加s的，而全局注册是不加s的
+            </li>
+        </ol>
+        <p>
+            组件和指令的区别：组件的注册是一个标签，而指令注册是已有标签里的一个属性。在实际的开发中组件用的比较多，指令用的比较少
+        </p>
+    </p>
+    <div id = "app">
+        <jszq></jszq>
+        <panda></panda>
+    </div>
+    <script type = "text/javascript"> 
+        Vue.component('jszq',{
+            template:`<div style = "color:red">我是全局的jszq组件</div>`
+        })
+        var app = new Vue({
+            el:'#app',
+            components:{
+                "panda":{
+                    template:`<div style = "color:green">我是局部的panda组件</div>`
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

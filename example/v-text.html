@@ -9,15 +9,20 @@
 </head>
 <body>
     <h1>v-text&v-html</h1>
-    <br>
+    <p>在html中输入data的值时，用{{**}}，但是这种是有弊端的，当网速很慢或者js出错的时候，页面上会显示{{**}}，用v-text可以解决这个问题</p>
+    <p>当data中含有html标签的时候，用v-text是不能正确输出的，此时用v-html就可以解决</p>
+    <hr>
     <div id="app">
-
+        <div v-text = "message"></div>
+        <div v-html = "megHtml"></div>
+        <div v-text = "megHtml"></div>
     </div>
     <script type="text/javascript">
         var app = new Vue({
             el:'#app',
             data:{
-                
+               message:'hello world!',
+               megHtml:'<a href = "#">这是一个连接</a>'
             }
         })
     </script>

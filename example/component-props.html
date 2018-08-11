@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>props</title>
+    <script type = "text/javascript" src = "../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>props</h1>
+    <hr>
+    <p>
+        定义属性我们需要用props选项，加上数组形式的属性名称，例如：props:['here']。在组件的模板里读出属性值只需要用插值的形式，例如{{here}}
+    </p>
+    <p>
+        在写属性时经常会加入'-'来进行分词，比如<panda from-here = "China"></panda>,这时我们在props里面如果写成props:['from-here']是错误的，我们必须用小驼峰的写法props:['fromHere']
+    </p>
+    <p>
+        把构造器中的data的值传递给组件，我们只要进行绑定就可以了，就是v-bind:xxx
+    </p>
+    <div id = "app">
+        <panda :here = "message"></panda>
+    </div>
+    <script type = "text/javascript"> 
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'China'
+            },
+            components:{
+                "panda":{
+                    template:`<div style = "color:green">Panda from {{here}}</div>`,
+                    props:['here']
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

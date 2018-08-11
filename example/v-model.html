@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>v-model实例</title>
+</head>
+<body>
+    <h1>v-model实例</h1>
+    <hr>   
+    <div id="app">
+        <h3>简单的v-model</h3>
+        我在这呢：{{message}}
+        <p>
+           请输入<input type="text" v-model = 'message'>
+        </p>
+        <hr>
+        <h3>文本区域的双向绑定</h3>
+        看我：{{textareaMessage}}
+        <br>
+        <textarea cols="30" rows="10" v-model = "textareaMessage"></textarea>
+        <hr>
+        <h3>修饰符</h3>
+        <p>
+            <ul>
+                <li>
+                    .lazy:取代imput监听的change事件，实现懒加载(当鼠标离开的时候触发)
+                </li>
+                <li>
+                    .number:输入字符串转换为数字
+                </li>
+                <li>
+                    .trim:去掉输入的首尾空格
+                </li>
+            </ul>           
+        </p>
+        v-model.lazy:{{messageLazy}}
+        <br>
+        <input type="text" v-model.lazy = "messageLazy">
+        <br>
+        v-model.number:{{messageNumber}}
+        <br>
+        <input type="text" v-model.number = "messageNumber">
+        <br>
+        v-model.trim:{{messageTrim}}
+        <br>
+        <input type="text" v-model.trim = "messageTrim">
+        <hr>
+        <h3>一个多选框</h3>
+        <input type="checkbox" id="oneCheckbox" v-model = "checkboxVal">
+        <label for="oneCheckbox">{{checkboxVal}}</label>
+        <hr>
+        <h3>多个多选框</h3>
+        <input type="checkbox" id="oneCbox" value="oneCbox" v-model = "cboxVal">
+        <label for="oneCbox">oneCbox</label>
+        <input type="checkbox" id="twoCbox" value="twoCbox" v-model = "cboxVal">
+        <label for="twoCbox">twoCbox</label>
+        <input type="checkbox" id="threeCbox" value="threeCbox" v-model = "cboxVal">
+        <label for="threeCbox">threeCbox</label>
+        <p>{{cboxVal}}</p>
+        <hr>
+        <h3>单选框</h3>
+        <input type="radio" id="nan" value="男" v-model = "sex">
+        <label for="nan">男</label>
+        <input type="radio" id="nv" value="女" v-model = "sex">
+        <label for="nv">女</label>
+        <p>{{sex}}</p>
+    </div>
+   
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'',
+                textareaMessage:'',
+                messageLazy:'',
+                messageNumber:'',
+                messageTrim:'',
+                checkboxVal:'',
+                cboxVal:[],
+                sex:'男'
+            }
+        })
+    </script>
+</body>
+</html>
